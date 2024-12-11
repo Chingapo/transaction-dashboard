@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Transaction Dashboard
 
-## Getting Started
+This project is a **Transaction Dashboard** application that aggregates, analyzes, and visualizes transaction data. It allows users to interact with and view various statistics, charts, and breakdowns based on transactions in a selected month or across all months.
 
-First, run the development server:
+## Live Deployed Link : https://transaction-dashboard-2khx02y0d-arjuns-projects-249f082e.vercel.app/
+
+## Features
+
+- **Transaction Data Visualization:**
+  - Bar charts displaying sales data and item statistics.
+  - Pie charts showing category-wise item counts.
+  
+- **Statistics:**
+  - Display total sales, total items sold, and total items not sold.
+  
+- **Flexible Filtering:**
+  - Filter transactions based on a selected month or view data for all months.
+
+- **Firebase Integration:**
+  - Uses Firebase Firestore to fetch transaction data.
+  
+## Technologies Used
+
+- **Frontend:**
+  - React (Next.js)
+  - Tailwind CSS for styling
+  - Chart.js for data visualization (Bar and Pie charts)
+  
+- **Backend:**
+  - Next.js API routes to fetch data from Firebase Firestore
+  - Firebase for database management
+  
+- **Deployment:**
+  - Deployed on Vercel for frontend hosting
+
+## Setup Instructions
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Chingapo/transaction-dashboard.git
+cd transaction-dashboard
+```
+## Step 2: Install Dependencies
+
+Install the necessary dependencies by running the following command in the project directory:
+
+```bash
+npm install
+```
+## Step 3: Set Up Firebase and Environment Variables
+- Set up Firebase credentials:
+  Create a service account in Firebase Console and download the JSON credentials file.
+Store this file in your project under the app directory (for example, app/service_account_key.json).
+Add Firebase Project ID:
+
+Add your Firebase Project ID to the .env file:
+
+```bash
+FIREBASE_PROJECT_ID=[your-project-id]
+FIREBASE_CLIENT_EMAIL=[your-client-email]
+FIREBASE_PRIVATE_KEY=[your-private-key]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
