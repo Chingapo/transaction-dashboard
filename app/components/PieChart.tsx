@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title, PieController, CategoryScale } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title, PieController, CategoryScale, TooltipItem } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title, PieController, CategoryScale);
 
@@ -36,10 +36,8 @@ const PieChart: React.FC<PieChartProps> = ({ selectedMonth }) => {
     fetchCategoryData();
   }, [selectedMonth]);
 
-
   useEffect(() => {
     if (categories.length > 0 && chartRef.current) {
-
       if (chartInstance.current) {
         chartInstance.current.destroy();
       }
@@ -69,7 +67,7 @@ const PieChart: React.FC<PieChartProps> = ({ selectedMonth }) => {
           },
           tooltip: {
             callbacks: {
-              label: (context: any) => `${context.label}: ${context.raw} items`,
+              label: (context: TooltipItem<'pie'>) => `${context.label}: ${context.raw} items`,
             },
           },
         },

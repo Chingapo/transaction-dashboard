@@ -6,6 +6,14 @@ interface Transaction {
     dateOfSale: string;
 }
 
+interface FirestoreDocument {
+    fields: {
+        itemId: { integerValue: number };
+        price: { doubleValue?: number; integerValue?: number };
+        dateOfSale: { stringValue: string };
+    };
+}
+
 export async function GET(request: NextRequest) {
     try {
         const url = new URL(request.url);
@@ -24,7 +32,7 @@ export async function GET(request: NextRequest) {
 
         const data = await response.json();
 
-        let transactions: Transaction[] = data.documents?.map((doc: any) => {
+        let transactions: Transaction[] = data.documents?.map((doc: FirestoreDocument) => {
             const fields = doc.fields;
             return {
                 itemId: fields.itemId?.integerValue || 0,

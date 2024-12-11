@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, BarController } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, BarController, TooltipItem } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, BarController);
 
@@ -43,7 +43,6 @@ const PriceChart: React.FC<PriceChartProps> = ({ selectedMonth }) => {
         chartInstance.current.destroy();
       }
 
-
       const sortedPriceRanges = [...priceRanges].sort((a, b) => {
         const aMin = parseInt(a.range.split('-')[0], 10);
         const bMin = parseInt(b.range.split('-')[0], 10);
@@ -74,7 +73,7 @@ const PriceChart: React.FC<PriceChartProps> = ({ selectedMonth }) => {
           },
           tooltip: {
             callbacks: {
-              label: (context: any) => `Items: ${context.raw}`,
+              label: (context: TooltipItem<'bar'>) => `Items: ${context.raw}`,
               color: 'rgb(243, 244, 246)',
             },
           },
@@ -122,7 +121,6 @@ const PriceChart: React.FC<PriceChartProps> = ({ selectedMonth }) => {
         <div className="text-center text-lg text-gray-100">Loading...</div>
       )}
     </div>
-
   );
 };
 

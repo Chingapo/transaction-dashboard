@@ -11,6 +11,16 @@ interface Transaction {
   sold: boolean;
   dateOfSale: string;
 }
+interface ProductTransaction {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  sold: boolean;
+  dateOfSale: string;
+}
 
 export async function GET() {
   try {
@@ -19,7 +29,7 @@ export async function GET() {
     const data = await response.json();
 
     const batch = db.batch();
-    data.forEach((item: any) => {
+    data.forEach((item: ProductTransaction) => {
       const transactionData: Transaction = {
         itemId: item.id, // rename field to itemId as it clashes with firebase reserved field
         title: item.title,
