@@ -221,3 +221,6 @@ GET /api/combined-data?month=5
   ]
 }
 ```
+
+# Contributing
+Feel free to submit issues and pull requests. Any contributions are welcome!
